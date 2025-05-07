@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doublecmd>
+  <Tabs>
+    <OpenedTabs>
+      <Left>
+        <ActiveTab>0</ActiveTab>
+        <Tab>
+          <FileView Type="columns">
+            <Sortings>
+              <Sorting>
+                <Direction>1</Direction>
+                <Function>12</Function>
+              </Sorting>
+            </Sortings>
+            <History>
+              <Entry Active="True">
+                <FileSource Type="FileSystem"/>
+                <Paths>
+                  <Path Filename="..">/home/goncharenko/Projects/CHTTPServer/templates/</Path>
+                  <Path Filename="res">/home/goncharenko/Projects/CHTTPServer/</Path>
+                  <Path Filename="favicon.ico">/home/goncharenko/Projects/CHTTPServer/res/</Path>
+                  <Path Filename="..">/home/goncharenko/Projects/CHTTPServer/</Path>
+                  <Path Filename="CHTTPServer">/home/goncharenko/Projects/</Path>
+                  <Path Filename=".config">/home/goncharenko/</Path>
+                  <Path Filename="qt5ct">/home/goncharenko/.config/</Path>
+                  <Path Filename="colors">/home/goncharenko/.config/qt5ct/</Path>
+                  <Path Filename="gruvbox.conf">/home/goncharenko/.config/qt5ct/colors/</Path>
+                  <Path Filename="..">/home/goncharenko/.config/qt5ct/</Path>
+                  <Path Filename="qt5ct">/home/goncharenko/.config/</Path>
+                  <Path Filename=".config">/home/goncharenko/</Path>
+                  <Path Filename="goncharenko">/home/</Path>
+                  <Path Filename="mnt">/</Path>
+                  <Path Filename="usb">/mnt/</Path>
+                  <Path Filename="..">/mnt/usb/</Path>
+                  <Path Filename="..">/mnt/</Path>
+                  <Path Filename="home">/</Path>
+                  <Path Filename="goncharenko">/home/</Path>
+                  <Path Filename=".config">/home/goncharenko/</Path>
+                  <Path Filename="qt5ct">/home/goncharenko/.config/</Path>
+                  <Path Filename="colors">/home/goncharenko/.config/qt5ct/</Path>
+                  <Path Filename="..">/home/goncharenko/.config/qt5ct/colors/</Path>
+                  <Path Filename="qss">/home/goncharenko/.config/qt5ct/</Path>
+                  <Path Filename="..">/home/goncharenko/.config/qt5ct/qss/</Path>
+                  <Path Filename="colors">/home/goncharenko/.config/qt5ct/</Path>
+                  <Path Filename="..">/home/goncharenko/.config/qt5ct/colors/</Path>
+                  <Path Filename="qss">/home/goncharenko/.config/qt5ct/</Path>
+                  <Path Filename="..">/home/goncharenko/.config/qt5ct/qss/</Path>
+                  <Path Filename="..">/home/goncharenko/.config/qt5ct/</Path>
+                  <Path Filename="fontconfig">/home/goncharenko/.config/</Path>
+                  <Path Filename="fonts.conf">/home/goncharenko/.config/fontconfig/</Path>
+                  <Path Filename="alacritty">/home/goncharenko/.config/</Path>
+                  <Path Filename="..">/home/goncharenko/.config/alacritty/</Path>
+                  <Path Filename="..">/home/goncharenko/.config/</Path>
+                  <Path Filename="..">/home/goncharenko/</Path>
+                  <Path Filename="..">/home/goncharenko/Downloads/</Path>
+                  <Path Filename="..">/home/</Path>
+                  <Path Filename="..">/home/goncharenko/Downloads/</Path>
+                  <Path Filename="..">/home/</Path>
+                  <Path Filename="..">/home/goncharenko/Downloads/</Path>
+                  <Path Filename="goncharenko">/home/</Path>
+                  <Path Filename="..">/home/goncharenko/</Path>
+                  <Path Filename="..">/mnt/usb/</Path>
+                  <Path Filename="..">/mnt/</Path>
+                  <Path Filename="mnt">/</Path>
+                  <Path Filename="Downloads">/home/goncharenko/</Path>
+                  <Path Filename="..">/home/goncharenko/Downloads/</Path>
+                  <Path Filename=".config">/home/goncharenko/</Path>
+                  <Path Filename="dconf">/home/goncharenko/.config/</Path>
+                </Paths>
+              </Entry>
+            </History>
+            <ColumnsView>
+              <ColumnsSet>Default</ColumnsSet>
+            </ColumnsView>
+          </FileView>
+        </Tab>
+      </Left>
+      <Right>
+        <ActiveTab>0</ActiveTab>
+        <Tab>
+          <FileView Type="columns">
+            <Sortings>
+              <Sorting>
+                <Direction>1</Direction>
+                <Function>12</Function>
+              </Sorting>
+            </Sortings>
+            <History>
+              <Entry Active="True">
+                <FileSource Type="FileSystem"/>
+                <Paths>
+                  <Path Filename="default">/usr/lib/doublecmd/</Path>
+                  <Path Filename="..">/usr/lib/</Path>
+                  <Path Filename="..">/usr/</Path>
+                  <Path Filename="home">/</Path>
+                  <Path Filename="goncharenko">/home/</Path>
+                  <Path Filename="Downloads">/home/goncharenko/</Path>
+                  <Path Filename="Паспорт Игорь (прописка).pdf">/home/goncharenko/Downloads/</Path>
+                </Paths>
+              </Entry>
+            </History>
+            <ColumnsView>
+              <ColumnsSet>Default</ColumnsSet>
+            </ColumnsView>
+          </FileView>
+        </Tab>
+      </Right>
+    </OpenedTabs>
+  </Tabs>
+</doublecmd>

@@ -1,0 +1,29 @@
+# Ctrl+Shift+Space to start Vi mode
+# https://github.com/alacritty/alacritty/blob/master/docs/features.md
+
+[general]
+import = ["gruvbox_dark.toml",]
+
+[env]
+TERM = "xterm-256color"
+
+[window]
+title = "Terminal"
+#opacity = 0.9
+
+[terminal]
+# NOTE: Install zsh before copying this
+shell = { program = "/bin/zsh" }
+
+[font]
+size = 7.5
+[font.normal]
+family = "monospace"
+style = "Bold"
+
+[colors]
+draw_bold_text_with_bright_colors = false
+
+[cursor.style]
+blinking = "On"
+
