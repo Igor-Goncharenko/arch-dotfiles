@@ -133,8 +133,33 @@ return {
       },
     })
 
+    -- rust config
+    lspconfig["rust_analyzer"].setup({
+      on_attach = on_attach,
+      capabilities = capabilities,
+      filetypes = { "rust" },
+      settings = {
+        ["rust-analyzer"] = {
+          imports = {
+            granularity = {
+              group = "module",
+            },
+            prefix = "self",
+          },
+          cargo = {
+            buildScripts = {
+              enable = true,
+            },
+          },
+          procMacro = {
+            enable = true
+          },
+        }
+      }
+    })
+
     -- lua config
-    lspconfig.lua_ls.setup({
+    lspconfig["lua_ls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
       filetypes = { "lua" },

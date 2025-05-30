@@ -34,5 +34,6 @@ vim.opt.textwidth = 100
 vim.opt.colorcolumn = "100"
 
 -- Set copy and paste from/to vim, e.g vim --> browser, browser --> vim
+-- requires xclip (sudo pacman -S xclip)
 vim.opt.clipboard = "unnamedplus"
 
