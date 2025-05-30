@@ -7,6 +7,6 @@ cp -rf ~/.config/{i3,btop,nvim,tmux,alacritty,qt5ct} config/
 mkdir -p config/doublecmd
 cp -f ~/.config/doublecmd/{doublecmd.xml,shortcuts.scf,highlighters.xml,extassoc.xml,tabs.xml,colors.json} config/doublecmd
 
-cp -f ~/{.zshrc,.zprofile,.xinitrc} config/
+cp -f ~/{.zshrc,.zprofile,.xinitrc,.xprofile} config/
 
 rm config/nvim/lazy-lock.json
