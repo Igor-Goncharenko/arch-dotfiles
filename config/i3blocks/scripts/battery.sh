@@ -13,6 +13,8 @@ case $status in
         echo "BAT▲ $capacity%"
         echo "#98921a"
         ;;
+    "Not charging")
+        ;&
     "Full")
         echo "BAT $capacity%"
         echo "BAT $capacity%"
