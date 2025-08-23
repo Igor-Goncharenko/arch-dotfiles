@@ -1,3 +1,24 @@
+separator="|"
+separator_block_width=20
+
+[volume-pulseaudio]
+command=~/.config/i3blocks/scripts/volume-pulseaudio
+interval=once
+signal=1
+USE_ALSA_NAME=1
+LONG_FORMAT="${SYMB} ${VOL}% [${INDEX}:${NAME}]"
+SHORT_FORMAT="${SYMB} ${VOL}%"
+AUDIO_MUTED_SYMBOL=MUTED
+AUDIO_HIGH_SYMBOL=HIGH
+AUDIO_MED_THRESH=60
+AUDIO_MED_SYMBOL=MEDIUM
+AUDIO_LOW_THRESH=20
+AUDIO_LOW_SYMBOL=LOW
+DEFAULT_COLOR="#ebdbb2"
+MUTED_COLOR="#928374"
+USE_ALSA_NAME=0
+USE_DESCRIPTION=0
+
 [battery]
 command=~/.config/i3blocks/scripts/battery.sh
 interval=30
