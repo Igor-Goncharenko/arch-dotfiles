@@ -11,35 +11,35 @@ case $status in
     "Charging")
         echo "BAT▲ $capacity%"
         echo "BAT▲ $capacity%"
-        echo "#00FF00"
+        echo "#98921a"
         ;;
     "Full")
         echo "BAT $capacity%"
         echo "BAT $capacity%"
-        echo "#00FF00"
+        echo "#98971a"
         ;;
     "Discharging")
         if [ $capacity -le 20 ]; then
             echo "BAT⚠ $capacity%"
             echo "BAT⚠ $capacity%"
-            echo "#FF0000"
+            echo "#cc241d"
         else
             echo "BAT▼ $capacity%"
             echo "BAT▼ $capacity%"
 
             if [ $capacity -ge 80 ]; then
-                echo "#00FF00"
+                echo "#98971a"
             elif [ $capacity -ge 50 ]; then
-                echo "#FFFF00"
+                echo "#d79921"
             elif [ $capacity -ge 20 ]; then
-                echo "#FFA500"
+                echo "#cc241d"
             fi
         fi
         ;;
     *)
         echo "BAT[UNKNOWN] $capacity%"
         echo "BAT[UNKNOWN] $capacity%"
-        echo "#FF00FF"
+        echo "#ebdbb2"
         ;;
 esac
 
