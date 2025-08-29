@@ -1,9 +1,14 @@
 separator="|"
 separator_block_width=20
 
+[brightness]
+command=~/.config/i3blocks/scripts/brightness.sh
+interval=once
+signal=1
+
 [volume]
 command=~/.config/i3blocks/scripts/volume.sh
-interval=30
+interval=once
 signal=1
 
 [battery]

@@ -33,7 +33,7 @@ exec --no-startup-id feh --bg-center ~/.local/share/backgrounds/background_1920x
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-exec --no-startup-id volumeicon
+# exec --no-startup-id volumeicon
 
 # change keyboard layout
 bindsym $mod+Tab exec --no-startup-id setxkbmap -layout us
@@ -43,14 +43,14 @@ exec --no-startup-id pulseaudio --daemonize=no
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3blocks pkill -RTMIN+1 i3blocks
-bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && $refresh_i3blocks
-bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && $refresh_i3blocks
-bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && $refresh_i3blocks
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3blocks
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3blocks
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3blocks
 
 # sudo pacman -S brightnessctl
 # sudo usermod -aG video $USER
-bindsym XF86MonBrightnessUp exec brightnessctl -d amdgpu_bl1 set +10%
-bindsym XF86MonBrightnessDown exec brightnessctl -d amdgpu_bl1 set 10%-
+bindsym XF86MonBrightnessUp exec brightnessctl -d amdgpu_bl1 set +10% && $refresh_i3blocks
+bindsym XF86MonBrightnessDown exec brightnessctl -d amdgpu_bl1 set 10%- && $refresh_i3blocks
 
 bindsym $mod+Ctrl+l exec dm-tool lock && systemctl suspend
 
