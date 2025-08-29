@@ -1,6 +1,11 @@
 separator="|"
 separator_block_width=20
 
+[network-info]
+command=~/.config/i3blocks/scripts/network-status.sh
+interval=30
+signal=1
+
 [brightness]
 command=~/.config/i3blocks/scripts/brightness.sh
 interval=once
