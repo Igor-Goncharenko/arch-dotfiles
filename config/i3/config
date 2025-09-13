@@ -166,32 +166,26 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-exec_always --no-startup-id ~/.config/i3/scripts/workspaces.sh --default
+workspace "empty-edp-1" output eDP-1
+workspace "empty-hdmi-1" output HDMI-1
+
+# exec_always --no-startup-id ~/.config/i3/scripts/workspaces.sh --default
+exec_always --no-startup-id ~/.virtualenvs/i3-manager/bin/python ~/.config/i3/scripts/workspace_manager.py --primary-main
 mode "workspaces" {
-    bindsym q exec ~/.config/i3/scripts/workspaces.sh --primary-edp
-    bindsym w exec ~/.config/i3/scripts/workspaces.sh --primary-hdmi
-    bindsym e exec ~/.config/i3/scripts/workspaces.sh --split-hdmi-primary
-    bindsym r exec ~/.config/i3/scripts/workspaces.sh --split-edb-primary
+    # bindsym q exec ~/.config/i3/scripts/workspaces.sh --primary-edp
+    # bindsym w exec ~/.config/i3/scripts/workspaces.sh --primary-hdmi
+    # bindsym e exec ~/.config/i3/scripts/workspaces.sh --split-hdmi-primary
+    # bindsym r exec ~/.config/i3/scripts/workspaces.sh --split-edb-primary
+    bindsym q exec --no-startup-id ~/.virtualenvs/i3-manager/bin/python ~/.config/i3/scripts/workspace_manager.py --primary-main
+    bindsym w exec --no-startup-id ~/.virtualenvs/i3-manager/bin/python ~/.config/i3/scripts/workspace_manager.py --primary-secondary
+    bindsym e exec --no-startup-id ~/.virtualenvs/i3-manager/bin/python ~/.config/i3/scripts/workspace_manager.py --split-main-primary
+    bindsym r exec --no-startup-id ~/.virtualenvs/i3-manager/bin/python ~/.config/i3/scripts/workspace_manager.py --split-secondary-primary
     
     bindsym Return mode "default"
     bindsym Escape mode "default"
     bindsym $mod+t mode "default"
 }
 bindsym $mod+t mode "workspaces"
-
-workspace "empty-edp-1" output eDP-1
-workspace "empty-hdmi-1" output HDMI-1
-
-#workspace $ws1 output eDP-1
-#workspace $ws2 output eDP-1
-#workspace $ws3 output eDP-1
-#workspace $ws4 output eDP-1
-#workspace $ws5 output eDP-1
-#workspace $ws6 output HDMI-1
-#workspace $ws7 output HDMI-1
-#workspace $ws8 output HDMI-1
-#workspace $ws9 output HDMI-1
-#workspace $ws10 output HDMI-1
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
