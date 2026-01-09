@@ -173,18 +173,12 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 workspace "empty-edp-1" output eDP-1
 workspace "empty-hdmi-1" output HDMI-1
 
-# exec_always --no-startup-id ~/.config/i3/scripts/workspaces.sh --default
 exec_always --no-startup-id ~/.virtualenvs/i3-manager/bin/python \
                 ~/.config/i3/scripts/workspace_manager.py \
                 --ws $ws1 $ws2 $ws3 $ws4 $ws5 $ws6 $ws7 $ws8 $ws9 $ws10 \
                 --cmd primary-main
 
 mode "workspaces" {
-    # bindsym q exec ~/.config/i3/scripts/workspaces.sh --primary-edp
-    # bindsym w exec ~/.config/i3/scripts/workspaces.sh --primary-hdmi
-    # bindsym e exec ~/.config/i3/scripts/workspaces.sh --split-hdmi-primary
-    # bindsym r exec ~/.config/i3/scripts/workspaces.sh --split-edb-primary
-
     bindsym q exec --no-startup-id ~/.virtualenvs/i3-manager/bin/python \
         ~/.config/i3/scripts/workspace_manager.py \
         --ws $ws1 $ws2 $ws3 $ws4 $ws5 $ws6 $ws7 $ws8 $ws9 $ws10 \
