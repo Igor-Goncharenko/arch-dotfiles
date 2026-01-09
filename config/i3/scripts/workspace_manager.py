@@ -1,7 +1,29 @@
 import i3ipc
+import argparse
 import time
 from enum import Enum
 from typing import List, Optional, Self
+
+
+def argparser_init() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+            prog="Workspace manager for i3wm")
+
+    parser.add_argument(
+            "--ws",
+            nargs="+",
+            default=[],
+            help="Workspaces to use",
+            required=True
+            )
+    parser.add_argument(
+            "--cmd",
+            nargs=1,
+            required=True
+            )
+
+    return parser
+
 
 class WorkspaceMode(Enum):
     PRIMARY_MAIN = 0
@@ -10,14 +32,15 @@ class WorkspaceMode(Enum):
     SPLIT_MAIN_PRIMARY = 3
 
     @classmethod
-    def from_str(cls, s: str) -> Self:
+    def from_str(cls, s: str) -> Optional[Self]:
         MODE_STR = {
                 "primary-main": WorkspaceMode.PRIMARY_MAIN,
                 "primary-secondary": WorkspaceMode.PRIMARY_SEC,
                 "split-main-primary": WorkspaceMode.SPLIT_MAIN_PRIMARY,
                 "split-secondary-primary": WorkspaceMode.SPLIT_SEC_PRIMARY,
         }
-        return cls(MODE_STR[s])
+        mode = MODE_STR.get(s)
+        return cls(mode) if mode is not None else None
 
 
 class WorkspaceManager:
@@ -79,16 +102,15 @@ class WorkspaceManager:
 
 
 def main() -> None:
-    import sys
+    parser = argparser_init()
+    args = parser.parse_args()
+    manager = WorkspaceManager(args.ws)
 
-    workspaces = [str(i) for i in range(1, 11)]
-    manager = WorkspaceManager(workspaces)
-
-    if len(sys.argv) > 1:
-        command = WorkspaceMode.from_str(sys.argv[1].lstrip("-"))
+    command = WorkspaceMode.from_str(args.cmd[0])
+    if command is not None:
         manager.update_workspaces(command)
     else:
-        print("Incorrect usage")
+        print("Incorrect command")
 
 
 if __name__ == "__main__":

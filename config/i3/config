@@ -9,11 +9,12 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod1
+set $mod Mod4
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
+font pango:monospace 8
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -28,10 +29,6 @@ exec --no-startup-id feh --bg-center ~/.local/share/backgrounds/background_1920x
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
 
 # exec --no-startup-id volumeicon
 
@@ -49,12 +46,19 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 
 exec --no-startup-id $HOME/.config/i3/scripts/hdmi-handler.sh
 
+exec --no-startup-id flameshot
+bindsym $mod+Shift+s exec flameshot gui
+
 # sudo pacman -S brightnessctl
 # sudo usermod -aG video $USER
 bindsym XF86MonBrightnessUp exec brightnessctl -d amdgpu_bl1 set +10% && $refresh_i3blocks
 bindsym XF86MonBrightnessDown exec brightnessctl -d amdgpu_bl1 set 10%- && $refresh_i3blocks
 
 bindsym $mod+Ctrl+l exec dm-tool lock && systemctl suspend
+
+# NetworkManager is the most popular way to manage wireless networks on Linux,
+# and nm-applet is a desktop environment-independent system tray GUI for it.
+exec --no-startup-id nm-applet
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -170,16 +174,36 @@ workspace "empty-edp-1" output eDP-1
 workspace "empty-hdmi-1" output HDMI-1
 
 # exec_always --no-startup-id ~/.config/i3/scripts/workspaces.sh --default
-exec_always --no-startup-id ~/.virtualenvs/i3-manager/bin/python ~/.config/i3/scripts/workspace_manager.py --primary-main
+exec_always --no-startup-id ~/.virtualenvs/i3-manager/bin/python \
+                ~/.config/i3/scripts/workspace_manager.py \
+                --ws $ws1 $ws2 $ws3 $ws4 $ws5 $ws6 $ws7 $ws8 $ws9 $ws10 \
+                --cmd primary-main
+
 mode "workspaces" {
     # bindsym q exec ~/.config/i3/scripts/workspaces.sh --primary-edp
     # bindsym w exec ~/.config/i3/scripts/workspaces.sh --primary-hdmi
     # bindsym e exec ~/.config/i3/scripts/workspaces.sh --split-hdmi-primary
     # bindsym r exec ~/.config/i3/scripts/workspaces.sh --split-edb-primary
-    bindsym q exec --no-startup-id ~/.virtualenvs/i3-manager/bin/python ~/.config/i3/scripts/workspace_manager.py --primary-main
-    bindsym w exec --no-startup-id ~/.virtualenvs/i3-manager/bin/python ~/.config/i3/scripts/workspace_manager.py --primary-secondary
-    bindsym e exec --no-startup-id ~/.virtualenvs/i3-manager/bin/python ~/.config/i3/scripts/workspace_manager.py --split-main-primary
-    bindsym r exec --no-startup-id ~/.virtualenvs/i3-manager/bin/python ~/.config/i3/scripts/workspace_manager.py --split-secondary-primary
+
+    bindsym q exec --no-startup-id ~/.virtualenvs/i3-manager/bin/python \
+        ~/.config/i3/scripts/workspace_manager.py \
+        --ws $ws1 $ws2 $ws3 $ws4 $ws5 $ws6 $ws7 $ws8 $ws9 $ws10 \
+        --cmd primary-main
+
+    bindsym w exec --no-startup-id ~/.virtualenvs/i3-manager/bin/python \
+        ~/.config/i3/scripts/workspace_manager.py \
+        --ws $ws1 $ws2 $ws3 $ws4 $ws5 $ws6 $ws7 $ws8 $ws9 $ws10 \
+        --cmd primary-secondary
+
+    bindsym e exec --no-startup-id ~/.virtualenvs/i3-manager/bin/python \
+        ~/.config/i3/scripts/workspace_manager.py \
+        --ws $ws1 $ws2 $ws3 $ws4 $ws5 $ws6 $ws7 $ws8 $ws9 $ws10 \
+        --cmd split-main-primary
+
+    bindsym r exec --no-startup-id ~/.virtualenvs/i3-manager/bin/python \
+        ~/.config/i3/scripts/workspace_manager.py \
+        --ws $ws1 $ws2 $ws3 $ws4 $ws5 $ws6 $ws7 $ws8 $ws9 $ws10 \
+        --cmd split-secondary-primary
     
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -263,6 +287,8 @@ for_window [class="Trilium Notes"] floating disable
 bar {
     status_command i3blocks
     position bottom
+    tray_output primary
+    #tray_padding 5
 
     colors {
         background $bg
