@@ -10,9 +10,6 @@ return {
     },
   },
   config = function()
-    -- import lspconfig plugin
-    local lspconfig = require("lspconfig")
-
     -- import cmp-nvim-lsp plugin
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
@@ -29,9 +26,9 @@ return {
         vim.keymap.set("n", keys, func, opts)
       end
 
+      --local position_encoding = client.offset_encoding or "utf-16"
+
       -- set keybinds
-
-
       nmap("<leader>gR", "<cmd>Telescope lsp_references<CR>", "Show LSP references")
 
       -- go to declaration
@@ -74,96 +71,87 @@ return {
     -- used to enable autocompletion (assign to every lsp server config)
     local capabilities = cmp_nvim_lsp.default_capabilities()
 
-    -- Change the Diagnostic symbols in the sign column (gutter)
-    -- If it's not working, install 'Nerd Font'
-    -- local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-    -- for type, icon in pairs(signs) do
-    --   local hl = "DiagnosticSign" .. type
-    --   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-    -- end
-
-    -- python config
-    lspconfig["pyright"].setup({
-      capabilities = capabilities,
+    vim.lsp.config.pyright = {
       on_attach = on_attach,
-      filetypes = { "python" },
-    })
-
-    -- c/c++ config
-    lspconfig["clangd"].setup({
       capabilities = capabilities,
-      on_attach = on_attach,
-      filetypes = { "c", "cpp", "objc", "objcpp" },
+      cmd = { "pyright" },
+      filetypes = { "py" },
+    }
 
+    vim.lsp.config.clangd = {
+      on_attach = on_attach,
+      capabilities = capabilities,
+      cmd = {
+        "clangd",
+        "--clang-tidy",
+        "--background-index",
+        "--offset-encoding=utf-8",
+      },
+      root_markers = { ".clangd", "compile_commands.json" },
+      filetypes = { "c", "cpp" },
+    }
+
+    vim.lsp.config["bashls"] = {
+      on_attach = on_attach,
+      capabilities = capabilities,
+      cmd = { "bash-language-server", "start" },
+      filetypes = { "sh" },
+      single_file_support = true,
       settings = {
-        clangd = {
-          fallbackFlags = { "-std=c99" },
-          diagnostic = {
+        bashIde = {
+          explainshellEndpoint = "https://explainshell.com",
+          shellcheckPath = "shellcheck",
+          globPattern = "**/*@(.sh|.inc|.bash|.command)",
+        },
+      },
+    }
+
+    vim.lsp.config["lua_ls"] = {
+      on_attach = on_attach,
+      capabilities = capabilities,
+      -- Command and arguments to start the server.
+      cmd = { "lua-language-server" },
+      -- Filetypes to automatically attach to.
+      filetypes = { "lua" },
+      -- Sets the "workspace" to the directory where any of these files is found.
+      -- Files that share a root directory will reuse the LSP server connection.
+      -- Nested lists indicate equal priority, see |vim.lsp.Config|.
+      root_markers = { { ".luarc.json", ".luarc.jsonc" }, ".git" },
+      -- Specific settings to send to the server. The schema is server-defined.
+      -- Example: https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json
+      settings = {
+        Lua = {
+          runtime = {
+            version = "LuaJIT",
+          },
+          diagnostics = {
+            globals = { "vim" },
+          },
+          workspace = {
+            checkThirdParty = false,
+            library = {
+              vim.env.VIMRUNTIME,
+            },
+          },
+          codeLens = {
             enable = true,
           },
-          headerInsertion = "never",
-        },
-      },
-    })
-
-    -- haskell config
-    lspconfig["hls"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-      filetypes = { "haskell", "lhaskell" },
-
-      settings = {
-        haskell = {
-          formattingProvider = "ormolu",  -- use 'ormolu' for formatting (or 'brittany', 'floskell')
-          checkProject = true,
-          maxCompletions = 40,
-          hlintOn = true,
-          diagnosticsOn = true,
-          completionSnippetsOn = true,
-          liquidOn = false,
-          plugin = {
-            rename = {
-              crossModule = true,
-            },
-            tactics = {
-              globalOn = true,
-            },
+          completion = {
+            callSnippet = "Replace",
+          },
+          doc = {
+            privateName = { "^_" },
+          },
+          hint = {
+            enable = true,
+            setType = false,
+            paramType = true,
+            paramName = "Disable",
+            semicolon = "Disable",
+            arrayIndex = "Disable",
           },
         },
       },
-    })
-
-    -- rust config
-    lspconfig["rust_analyzer"].setup({
-      on_attach = on_attach,
-      capabilities = capabilities,
-      filetypes = { "rust" },
-      settings = {
-        ["rust-analyzer"] = {
-          imports = {
-            granularity = {
-              group = "module",
-            },
-            prefix = "self",
-          },
-          cargo = {
-            buildScripts = {
-              enable = true,
-            },
-          },
-          procMacro = {
-            enable = true
-          },
-        }
-      }
-    })
-
-    -- lua config
-    lspconfig["lua_ls"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-      filetypes = { "lua" },
-    })
-  end,
+    }
+  end
 }
-
